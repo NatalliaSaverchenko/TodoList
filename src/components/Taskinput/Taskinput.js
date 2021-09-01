@@ -1,7 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+// import { changeInput, clearInput } from '../../redux/actions/formActions'
 const Taskinput = ({ addTask }) => {
   const [input, setInput] = useState('')
+  const dispatch = useDispatch()
+  // const input = useSelector((store) => store.input)
 
   const inputChange = (e) => {
     e.preventDefault()
@@ -10,7 +14,7 @@ const Taskinput = ({ addTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (input) {
-      addTask(input)
+      dispatch(addTask(input))
       setInput('')
     }
   }
