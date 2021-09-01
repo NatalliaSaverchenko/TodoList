@@ -10,38 +10,10 @@ import {
 import Task from './components/Task/Task'
 import Taskinput from './components/Taskinput/Taskinput'
 const App = () => {
-  // const [tasks, setTasks] = useState([
-  //   { id: 0, title: 'create app', done: false },
-  //   { id: 1, title: 'create react', done: true },
-  //   { id: 2, title: 'create redux', done: false },
-  // ])
   const tasks = useSelector((store) => store.tasks)
-  console.log('tasks', tasks.data)
-  // console.log('input', input)
+  // console.log('tasks', tasks.data)
 
   const dispatch = useDispatch()
-  // const addTask = (task) => {
-  //   const newTasks = tasks.concat({
-  //     id: tasks.length !== 0 ? tasks.length : 0,
-  //     title: task,
-  //     done: false,
-  //   })
-  //   setTasks(newTasks)
-  // }
-
-  // const doneTask = (id) => {
-  //   let completeTasks = tasks.map((task) => {
-  //     if (task.id === id) {
-  //       task.done = !task.done
-  //     }
-  //     return task
-  //   })
-  //   setTasks(completeTasks)
-  // }
-
-  // const deleteTask = (id) => {
-  //   setTasks(tasks.filter((task) => task.id !== id))
-  // }
 
   // const activeTasks = tasks.filter((task) => !task.done)
   // const activeTasks = dispatch(getActiveTasks())

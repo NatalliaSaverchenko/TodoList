@@ -1,28 +1,21 @@
 import React from 'react'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-// import { changeInput, clearInput } from '../../redux/actions/formActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeInput, clearInput } from '../../redux/actions/tasksActions'
 const Taskinput = ({ addTask }) => {
-  const [input, setInput] = useState('')
   const dispatch = useDispatch()
-  // const input = useSelector((store) => store.input)
+  const input = useSelector((store) => store.tasks.field)
 
-  const inputChange = (e) => {
-    e.preventDefault()
-    setInput(e.target.value)
-  }
   const handleSubmit = (e) => {
     e.preventDefault()
     if (input) {
       dispatch(addTask(input))
-      setInput('')
+      dispatch(clearInput())
     }
   }
-
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input onChange={inputChange} value={input}></input>
+        <input onChange={(e) => dispatch(changeInput(e))} value={input}></input>
         <button onClick={handleSubmit}>Add</button>
       </form>
     </>

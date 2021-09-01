@@ -3,8 +3,10 @@ import {
   ADD_TASK,
   DELETE_TASK,
   COMPLETE_TASK,
-  GET_ACTIVE_TASKS,
-  GET_DONE_TASKS,
+  CHANGE_INPUT,
+  CLEAR_INPUT,
+  // GET_ACTIVE_TASKS,
+  // GET_DONE_TASKS,
 } from '../actions/actionsType'
 
 export const getTasks = () => {
@@ -33,15 +35,27 @@ export const completeTask = (id) => {
     payload: id,
   }
 }
-export const getActiveTasks = (id) => {
+// export const getActiveTasks = (id) => {
+//   return {
+//     type: GET_ACTIVE_TASKS,
+//     payload: id,
+//   }
+// }
+// export const getDoneTasks = (task) => {
+//   return {
+//     type: GET_DONE_TASKS,
+//     payload: task,
+//   }
+// }
+export const changeInput = (e) => {
   return {
-    type: GET_ACTIVE_TASKS,
-    payload: id,
+    type: CHANGE_INPUT,
+    payload: e,
   }
 }
-export const getDoneTasks = (task) => {
+export const clearInput = () => {
   return {
-    type: GET_DONE_TASKS,
-    payload: task,
+    type: CLEAR_INPUT,
+    payload: '',
   }
 }

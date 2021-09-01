@@ -3,6 +3,8 @@ import {
   ADD_TASK,
   DELETE_TASK,
   COMPLETE_TASK,
+  CHANGE_INPUT,
+  CLEAR_INPUT,
 } from '../actions/actionsType'
 const initialeState = {
   data: [
@@ -10,6 +12,7 @@ const initialeState = {
     { id: 1, title: 'create react', done: true },
     { id: 2, title: 'create redux', done: false },
   ],
+  field: '',
 }
 const tasksReducer = (state = initialeState, action) => {
   switch (action.type) {
@@ -17,6 +20,7 @@ const tasksReducer = (state = initialeState, action) => {
       return { ...state }
     case DELETE_TASK:
       return {
+        ...state,
         data: state.data.filter((task) => task.id !== action.payload),
       }
     case ADD_TASK:
@@ -33,6 +37,7 @@ const tasksReducer = (state = initialeState, action) => {
       }
     case COMPLETE_TASK:
       return {
+        ...state,
         data: state.data.map((task) => {
           if (task.id === action.payload) {
             task.done = !task.done
@@ -40,7 +45,10 @@ const tasksReducer = (state = initialeState, action) => {
           return task
         }),
       }
-
+    case CHANGE_INPUT:
+      return { ...state, field: action.payload.target.value }
+    case CLEAR_INPUT:
+      return { ...state, field: action.payload }
     default: {
       return state
     }
